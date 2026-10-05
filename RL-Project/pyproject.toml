@@ -1,0 +1,32 @@
+[project]
+name = "gamified-mujoco-quadruped"
+version = "0.1.0"
+description = "A MuJoCo quadruped locomotion environment with procedural game terrain, rewards, HUD play mode, and RL training entry points."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "gymnasium>=0.29",
+  "mujoco>=3.1",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+# scripts/manual_play.py drives its own GLFW window rather than using
+# gymnasium's passive render modes, so GLFW is needed only for play mode.
+play = [
+  "glfw>=2.5",
+]
+train = [
+  "stable-baselines3>=2.3",
+  "torch>=2.1",
+]
+tensorboard = [
+  "tensorboard>=2.14",
+]
+dev = [
+  "pytest>=8",
+  "gymnasium[other]>=0.29",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
